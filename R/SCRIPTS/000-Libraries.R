@@ -38,35 +38,28 @@ pkgs <- c(
   "doParallel",    # Parallel Computing
   "foreach",       # Parallel Computing
   "openxlsx",      # Microsoft Excel Files
-  "stringi",       #Character/String Editor
+  "stringi",       # Character/String Editor
   "stringr",       # Character/String Editor
+  "zoo",           # Time Series
   "reshape2",      # Data Management/Manipulation
   "scales",        # Number formatting
   "cowplot",       # Plot Grids
   "tmap",          # Cartography
   "tmaptools",     # Cartographic tools
+  "tigris",        # US shapefiles
+  "censusapi",     # Census Data
   "sp",            # Spatial Objects
   "grid",          # Plot Grids
   "kableExtra",    # Pretty Tables
+  "LexisPlotR",    # Lexis Diagrams
   "pdftools",      # Load pdfs
   "R.utils",       # Utilities
-  "IDPmisc",        # Quality na.rm
-  "ggrepel",
-  "raster",
-  "gridExtra",
-  "magick",
-  "pdftools",
-  "readxl",
-  "zoo",
-  "bsts",
-  "CausalImpact",
-  "kableExtra",
-  "lettercase",
-  "philentropy",
-  "ggridges",
-  "janitor",
-  "gghighlight"
-  
+  "forecast",      # Forecasting
+  "pbmcapply",     # Progress Bar Multicore Apply
+  "IDPmisc",       # Quality na.rm
+  "tidycensus",    # Census Data
+  "LexisPlotR",     # Making a lexis diagram
+  "numform"
 )
 
 # Install missing packages
@@ -91,3 +84,17 @@ registerDoParallel(clusters) # Register Cluster
 getDoParWorkers() # Determine Number of Utilized Clusters
 getDoParName() #  Name of the Currently Registered Parallel Computing Backend
 getDoParVersion() #  Version of the Currently Registered Parallel Computing Backend
+
+arima_order <- c(0,1,1) # setting the global arima model
+arma <- "ARIMA(0,1,1)"
+
+# TEST YEAR IS SET TO 2000
+test_year = 2015
+# LAUNCH YEAR IS THE SAME AS THE TEST YEAR
+launch_year = test_year
+# THE NUMBER OF AGE GROUPS
+SIZE<-18
+# NUMBER OF PROJECTION STEPS
+STEPS<-6
+# FORECAST LENGTH. SINCE THE PROJECTION INTERVAL IS 5 YEARS IT IS (STEPS*5)
+FORLEN<-(STEPS*5)
