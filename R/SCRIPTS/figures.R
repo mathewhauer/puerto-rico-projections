@@ -1,8 +1,11 @@
+###------Figures -----
+## @knitr Figures
+
 set.seed(100)
 
 # source('R/SCRIPTS/000-Libraries.R')      # loading in the libraries
 
-K05_pop <- read_csv("R/DATA-RAW/pr2000_2017.csv") %>%
+K05_pop <- read_csv("../R/DATA-RAW/pr2000_2017.csv") %>%
   dplyr::select(A = POPULATION, everything()) %>%
   mutate(B = A,
          C = A) %>%
@@ -10,15 +13,15 @@ K05_pop <- read_csv("R/DATA-RAW/pr2000_2017.csv") %>%
 
 
 
-pr_projections2017 <- read_csv("R/PROJECTIONS/PR2017_2100.csv") %>%
+pr_projections2017 <- read_csv("../R/PROJECTIONS/PR2017_2100.csv") %>%
   dplyr::select(-COUNTYRACE, -Var1, -TYPE, -GEOID) %>%
   mutate(NAME = "Puerto Rico")
 
-pr_projections2015 <- read_csv("R/PROJECTIONS/PR2015_2100.csv") %>%
+pr_projections2015 <- read_csv("../R/PROJECTIONS/PR2015_2100.csv") %>%
   dplyr::select(-COUNTYRACE, -Var1, -TYPE, -GEOID) %>%
   mutate(NAME = "Puerto Rico")
 
-pr_projections20152 <- read_csv("R/PROJECTIONS/PR2015_2100plus.csv") %>%
+pr_projections20152 <- read_csv("../R/PROJECTIONS/PR2015_2100plus.csv") %>%
   dplyr::select(-COUNTYRACE, -Var1, -TYPE, -GEOID) %>%
   mutate(NAME = "Puerto Rico")
 
@@ -46,7 +49,7 @@ combined2 <- combined %>%
   dplyr::select(STATE:SEX, LaunchYear, Mean = A, Lower80 = B, Upper80 = C) %>%
   filter(LaunchYear != "2015")
 # 
-# write_csv(combined2, "R/PROJECTIONS/projections_combined.csv")
+# write_csv(combined2, "../R/PROJECTIONS/projections_combined.csv")
 
 totals <- combined %>%
   group_by(YEAR, LaunchYear) %>%
@@ -66,7 +69,8 @@ agegroups <- combined %>%
                    C = sum(C))
 
 # Making Figures
-prprojected_total <- ggplot(data = totals, aes(x = YEAR, y = A, color = LaunchYear, fill = LaunchYear, linetype = LaunchYear)) +
+# prprojected_total <- 
+  ggplot(data = totals, aes(x = YEAR, y = A, color = LaunchYear, fill = LaunchYear, linetype = LaunchYear)) +
   geom_ribbon(aes(ymin = B, ymax=C), alpha = 0.2, colour = NA) +
   geom_line(size = 1.5) +
   # ylim(0, max(totals$C)*1.1) +
@@ -82,9 +86,9 @@ prprojected_total <- ggplot(data = totals, aes(x = YEAR, y = A, color = LaunchYe
        title = "Projected Population Total for Puerto Rico, 2017-2047",
        caption = "Uncertainty is the 80th percentile prediction interval")
 
-ggsave(file = "R/FIGURES/prprojected_total-TFR.png", plot = prprojected_total)
+# ggsave(file = "../R/FIGURES/prprojected_total-TFR.png", plot = prprojected_total)
 
-prprojected_ages <- 
+# prprojected_ages <- 
   ggplot(data = filter(agegroups, LaunchYear %in% c("2015", "2017")), aes(x = YEAR, y = A, color = agegroup, fill = agegroup, linetype = LaunchYear)) +
   geom_ribbon(aes(ymin = B, ymax=C), alpha = 0.2, color = NA) +
   geom_line(size =1.5) +
@@ -101,4 +105,4 @@ prprojected_ages <-
        title = "Projected Population for select Age Groups for Puerto Rico, 2017-2047",
        caption = "Uncertainty is the 80th percentile prediction interval")
 
-ggsave(file = "R/FIGURES/prprojected_ages2.png", plot = prprojected_ages)
+# ggsave(file = "../R/FIGURES/prprojected_ages2.png", plot = prprojected_ages)

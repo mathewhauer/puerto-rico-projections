@@ -1,11 +1,11 @@
-###################
-### DATA PREP
-##################
-rm(list=ls())
-source('R/SCRIPTS/000-Libraries.R')      # loading in the libraries
+###------FERTILITY PROJECTION -----
+## @knitr fertility
+
+# rm(list=ls())
+# source('R/SCRIPTS/000-Libraries.R')      # loading in the libraries
 
 # Loading in the Human Fertility Database estimates from Hauer & Schmertmann 2020.
-HMDHFDtfr <- read_csv("R/DATA-RAW/HMDHFD-allbTFR_06172017.csv") %>%
+HMDHFDtfr <- read_csv("../R/DATA-RAW/HMDHFD-allbTFR_06172017.csv") %>%
   dplyr::select(-lagTFR) %>%
   group_by(Code) %>%
   mutate(delta1yearTFR = post_mean/lag(post_mean)) %>% # calculating the 1 year changes.
@@ -19,7 +19,7 @@ increase <- max(HMDHFDtfr$delta1yearTFR)
 
 
 # Loading in the PR population data
-K05_pop <- read_csv("R/DATA-RAW/pr2000_2017.csv")
+K05_pop <- read_csv("../R/DATA-RAW/pr2000_2017.csv")
 
 forecastfertrates <- function(launch_year, increase){
   K05t <- K05_pop %>%
@@ -76,6 +76,6 @@ fertrates_20152100plus <- forecastfertrates(2015, increase = increase)
 
 
   
-write_csv(fertrats_20152100, "R/DATA-PROCESSED/state-level-fert-rates_20152100.csv")
-write_csv(fertrats_20172100, "R/DATA-PROCESSED/state-level-fert-rates_20172100.csv")
-write_csv(fertrates_20152100plus, "R/DATA-PROCESSED/state-level-fert-rates_20152100plus.csv")
+write_csv(fertrats_20152100, "../R/DATA-PROCESSED/state-level-fert-rates_20152100.csv")
+write_csv(fertrats_20172100, "../R/DATA-PROCESSED/state-level-fert-rates_20172100.csv")
+write_csv(fertrates_20152100plus, "../R/DATA-PROCESSED/state-level-fert-rates_20152100plus.csv")

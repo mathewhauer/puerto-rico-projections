@@ -1,20 +1,9 @@
-# PAPER TITLE
+# Resilience for Whom? Demographic Change and the Redevelopment of the Built Environment in Puerto Rico
 
 # Introduction
-Here we provide the data and code for:  [**PAPER TITLE**](https://github.com/mathewhauer/paper_template/blob/master/MANUSCRIPT/manuscript.pdf)
-
-### Citation
+Here we provide the data and code for **Resilience for Whom? Demographic Change and the Redevelopment of the Built Environment in Puerto Rico**
 
 
-> Hauer, M.E. & Scientist 2. *Great Journal* (DOI Forthcoming) (YEAR ACCESSED).
-
-
-# Abstract
-> Lorem Ipsum
-
-![Main Figure](MANUSCRIPT/manuscript_files/figure-latex/pressure-1.png "Main Figure")
-
-**Figure Title.** Description of Figure.
 
 To see all of the underlying code and the results, [click here](http://htmlpreview.github.io/?https://github.com/mathewhauer/paper_template/blob/master/MANUSCRIPT/reproduce.html)
 

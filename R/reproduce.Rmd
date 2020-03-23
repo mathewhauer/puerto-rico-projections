@@ -1,0 +1,49 @@
+---
+title: "Replication"
+output: html_document
+---
+
+All scripts required to reproduce the figures and tables in *Resilience for Whom? Demographic Change and the Redevelopment of the Built Environment in Puerto Rico* are contained below.
+
+```{r echo=FALSE}
+rm(list=ls())
+library(knitr)
+read_chunk('SCRIPTS/000-Libraries.R')
+read_chunk('SCRIPTS/002-fertility_rate_projections.R') 
+
+# Projections for all 3 scenarios
+read_chunk('SCRIPTS/007-projections_20152100.R')
+read_chunk('SCRIPTS/007-projections_20172100.R')
+read_chunk('SCRIPTS/007-projections_20152100plus.R')
+
+# Figures
+
+read_chunk('SCRIPTS/figures.R')
+```
+# Libraries Required
+
+```{r libraries, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+```
+
+# Projecting Fertility Rates
+
+```{r fertility, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+
+```
+
+# Projecting PR Population 2015 - 2045 WITHOUT the Hurricane
+```{r Proj2015, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+```
+
+# Projecting PR Population 2017 - 2047 AFTER the Hurricane
+```{r Proj2015, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+```
+
+# Projecting PR Population 2015 - 2045 WITHOUT the Hurricane but with a lage increase in fertility
+```{r Proj2015plus, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+```
+
+# Figures
+
+```{r Figures, echo=TRUE, message = FALSE, warning = FALSE, cache=TRUE}
+```

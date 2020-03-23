@@ -1,3 +1,5 @@
+###------Proj2017 -----
+## @knitr Proj2017
 set.seed(100)
 
 # source('R/SCRIPTS/000-Libraries.R')      # loading in the libraries
@@ -6,10 +8,10 @@ set.seed(100)
 test_year = 2017
 # LAUNCH YEAR IS THE SAME AS THE TEST YEAR
 launch_year = test_year
-K05_pop <- read_csv("R/DATA-RAW/pr2000_2017.csv") %>%
+K05_pop <- read_csv("../R/DATA-RAW/pr2000_2017.csv") %>%
   filter(YEAR <= launch_year)
 
-stateferts <- read_csv("R/DATA-PROCESSED/state-level-fert-rates_20172100.csv")
+stateferts <- read_csv("../R/DATA-PROCESSED/state-level-fert-rates_20172100.csv")
 
 stateferts$COUNTYRACE <- paste0(stateferts$STATE, "_", stateferts$RACE)
 K05_pop$COUNTYRACE <- paste0(K05_pop$STATE, "_", K05_pop$RACE)
@@ -410,5 +412,5 @@ totals_20172100 <- z %>%
 # # totals2 <- left_join(z3, totals) %>%
 # #   mutate(percentage = (A/poptot))
 
-write_csv(z, paste0("R/PROJECTIONS/PR2017_2100.csv"))
+write_csv(z, paste0("../R/PROJECTIONS/PR2017_2100.csv"))
 
